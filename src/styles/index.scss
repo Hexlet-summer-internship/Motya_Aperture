@@ -1,16 +1,25 @@
-@import 'reset';
-@import 'font';
+@use 'font';
+@use 'reset';
+
+:root {
+    --color-black: #181818;
+    --color-total-black: #000000;
+    --color-grey: #C0C0C0;
+    --border-radius: 14px;
+}
 
 $color-black: #181818;
-$color-white: #fff;
 $padding-header: 9.5rem;
+$color-total-black: #000000;
 $poppins: "Poppins";
 $justify-between: space-between;
 
 body {
+    background-color: $color-total-black;
+
     * {
         text-decoration: none;
-        font-family: $poppins;
+        font-family: $poppins, sans-serif;
     }
 }
 
@@ -26,6 +35,8 @@ header {
     padding: 0 $padding-header 0 $padding-header;
     background-color: $color-black;
 
+
+
     .header__item-nav {
         gap: 32px;
         justify-content: center;
@@ -34,12 +45,12 @@ header {
         flex-wrap: wrap;
 
         a {
-            color: $color-white;
+            color: #fff;
             transition: .5s;
         }
 
         a:last-child {
-            background-color: $color-white;
+            background-color: #fff;
             padding: 12px;
             color: #181818;
             border-radius: 14px;
@@ -51,8 +62,75 @@ header {
 
         a:last-child:hover {
             background-color: $color-black;
-            color: $color-white;
+            color: #fff;
         }
     }
 
+}
+
+.section-main {
+    flex-direction: column;
+    position: relative;
+    width: 100%;
+    height: 716px;
+    background-size: cover;
+    justify-content: flex-end;
+    background-repeat: no-repeat;
+
+    .section-main__background img {
+        position: absolute;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: -1;
+    }
+
+    .section-main__background::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        background: linear-gradient(to bottom, rgba(0, 0, 0, 0.411), rgb(0, 0, 0));
+    }
+
+    .section-main__bottom-item-title {
+        flex-direction: column;
+        margin: 0 auto;
+        width: 600px;
+        text-align: center;
+        font-size: 3.375rem;
+        color: #fff;
+    }
+
+    .section-main__bottom-item-title p:nth-child(odd) {
+        color: var(--color-grey);
+        font-size: 14px;
+    }
+
+    .section-main__bottom-item-info {
+        width: 100%;
+        flex-direction: row;
+        justify-content: flex-end;
+        gap: 16px;
+        padding: 0 39px 0 0;
+
+        .item-info {
+            align-items: end;
+            justify-content: end;
+            color: #fff;
+            gap: 10px;
+        }
+
+        .item-info img {
+            object-fit: cover;
+        }
+
+        p {
+            font-size: 16px;
+        }
+    }
 }
